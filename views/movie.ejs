@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	<script type="text/javascript">
+		var apiBaseUrl = 'http://api.themoviedb.org/3/';
+		var imageBaseUrl = 'http://image.tmdb.org/t/p/w300';
+		var apiKey = '?api_key=fec8b5ab27b292a68294261bb21b04a5';
+		var npUrl  = apiBaseUrl + 'movie/now_playing' + apiKey;
+		$.getJSON(npUrl, function(movieData){
+			console.log(movieData);
+		});
+	</script>
+</head>
+<body>
+	<h1 class="title"></h1>
+	Today's Top 20 Movies:
+		<% for(var i = 0; i < movieObject.results.length; i++) { %>
+			<ul>
+			    <li>
+			    	<%= movieObject.results[i].original_title %>
+			    	<img src= <%=imageBaseUrl+movieObject.results[i].poster_path%> >
+			    </li>
+			</ul>
+	 	<% } %>
+</body>
+</html>
